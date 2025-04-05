@@ -14,5 +14,5 @@ export async function POST(req: Request) {
     messages,
   });
 
-  return new Response(result.toDataStream());
+  return result.toDataStreamResponse();
 }
