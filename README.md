@@ -19,3 +19,6 @@ OPENAI_API_KEY
 
 - [Vercel AI SDK 公式サイト](https://sdk.vercel.ai/)
 - [Zenn - Vercel AI SDK 触ってみた](https://zenn.dev/reiwatravel/articles/d1aa1ec3251cc4)
+- [テンプレート](https://vercel.com/templates?type=ai)
+- [GitHub - ai-sdk-image-generator](https://github.com/vercel-labs/ai-sdk-image-generator)
+- [Demo Site ai-sdk-image-generator](https://ai-sdk-image-generator.vercel.app/)
