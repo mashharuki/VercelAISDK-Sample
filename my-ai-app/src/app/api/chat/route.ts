@@ -1,5 +1,5 @@
 import { openai } from '@ai-sdk/openai';
-import { StreamingTextResponse, streamText } from 'ai';
+import { streamText } from 'ai';
 
 /**
  * OpenAIのAPIを呼び出す
@@ -14,5 +14,5 @@ export async function POST(req: Request) {
     messages,
   });
 
-  return new StreamingTextResponse(result.toAIStream());
+  return new Response(result.toDataStream());
 }
