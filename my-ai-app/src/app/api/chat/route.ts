@@ -1,3 +1,4 @@
+import { convertFahrenheitToCelsiusTool, getWeatherTool } from '@/app/lib/tools';
 import { openai } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 
@@ -12,6 +13,10 @@ export async function POST(req: Request) {
   const result = await streamText({
     model: openai('gpt-4-turbo'),
     messages,
+    tools: {
+      getWeatherTool,
+      convertFahrenheitToCelsiusTool
+    }
   });
 
   return result.toDataStreamResponse();

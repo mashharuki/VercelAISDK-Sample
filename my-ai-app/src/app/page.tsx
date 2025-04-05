@@ -7,14 +7,25 @@ import { useChat } from 'ai/react';
  * @returns 
  */
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({ maxSteps: 5,});
   
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       {messages.map(m => (
         <div key={m.id} className="whitespace-pre-wrap">
           {m.role === 'user' ? 'User: ' : 'AI: '}
-          {m.content}
+          {m.parts.map((part, i) => {
+            switch (part.type) {
+              case 'text':
+                return <div key={`${m.id}-${i}`}>{part.text}</div>;
+              case 'tool-invocation':
+                return (
+                  <pre key={`${m.id}-${i}`}>
+                    {JSON.stringify(part.toolInvocation, null, 2)}
+                  </pre>
+                );
+            }
+          })}
         </div>
       ))}
 
